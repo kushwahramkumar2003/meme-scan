@@ -1,12 +1,11 @@
 # MemeScan Verifier — Solana Protocol Architecture
 
-**Project:** MemeScan Verifier  
-**Team:** Ramkumar Kushwah & Shivani  
-**Date:** February 7, 2026
+**Project:** MemeScan
+**Team:** Ramkumar & Shivani
 
 ## Overview
 
-MemeScan Verifier computes a token trust score off-chain and stores the latest result on-chain in a deterministic PDA per mint. This provides fast analytics with immutable, composable on-chain state that wallets, DEX UIs, and bots can read permissionlessly.
+MemeScan computes a token trust score off-chain and stores the latest result on-chain in a deterministic PDA per mint. This provides fast analytics with immutable, composable on-chain state that wallets, DEX UIs, and bots can read permissionlessly.
 
 ## 1. Program Structure Visualization
 
