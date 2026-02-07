@@ -18,24 +18,24 @@ Represent the protocol as a minimal on-chain core + off-chain oracle pipeline:
 ```mermaid
 graph TB
     subgraph "Off-Chain Layer"
-        UI[User Interface]
-        ORC[Off-Chain Oracle Service]
-        RPC[RPC Provider (Helius or similar)]
-        ENG[Score Calculation Engine]
+        UI["User Interface"]
+        ORC["Off-Chain Oracle Service"]
+        RPC["RPC Provider - Helius or equivalent"]
+        ENG["Score Calculation Engine"]
     end
 
     subgraph "Solana Blockchain"
-        CORE[MemeScan Core Program]
-        SCORE[Token Score PDA]
-        CFG[Oracle Config PDA]
-        SYS[System Program]
-        SPL[SPL Token Program]
+        CORE["MemeScan Core Program"]
+        SCORE["Token Score PDA"]
+        CFG["Oracle Config PDA"]
+        SYS["System Program"]
+        SPL["SPL Token Program"]
     end
 
     subgraph "External Data"
-        META[Token Metadata]
-        HOLD[Holder Wallets]
-        TXH[Transaction History]
+        META["Token Metadata"]
+        HOLD["Holder Wallets"]
+        TXH["Transaction History"]
     end
 
     UI -->|Request analysis| ORC
@@ -58,10 +58,10 @@ graph TB
 ### Core Program Responsibilities
 ```mermaid
 graph LR
-    A[MemeScan Core Program] --> B[Initialize score account]
-    A --> C[Update score account]
-    A --> D[Read score account]
-    A --> E[Verify oracle authority]
+    A["MemeScan Core Program"] --> B["Initialize score account"]
+    A --> C["Update score account"]
+    A --> D["Read score account"]
+    A --> E["Verify oracle authority"]
 ```
 
 ## 2. Account Structure Mapping
@@ -69,14 +69,14 @@ graph LR
 ```mermaid
 graph TB
     subgraph "Program Accounts (Owned by MemeScan Program)"
-        CFG[Oracle Config PDA\nStores authorized oracle]
-        SCORE[Token Score PDA (per mint)\nStores latest score + metadata]
+        CFG["Oracle Config PDA<br/>Stores authorized oracle"]
+        SCORE["Token Score PDA per mint<br/>Stores latest score and metadata"]
     end
 
     subgraph "External Accounts"
-        ORA[Oracle Authority Wallet]
-        MINT[Token Mint Account]
-        USER[End User / DEX / Bot]
+        ORA["Oracle Authority Wallet"]
+        MINT["Token Mint Account"]
+        USER["End User / DEX / Bot"]
     end
 
     ORA -->|Signs updates| CFG
@@ -94,19 +94,19 @@ graph TB
 ```mermaid
 graph TB
     subgraph "MemeScan"
-        CORE[MemeScan Core Program]
-        ORC[Off-Chain Oracle Service]
+        CORE["MemeScan Core Program"]
+        ORC["Off-Chain Oracle Service"]
     end
 
     subgraph "Solana Native"
-        SYS[System Program]
-        SPL[SPL Token Program]
+        SYS["System Program"]
+        SPL["SPL Token Program"]
     end
 
     subgraph "Data / Infrastructure"
-        RPC[RPC Provider]
-        META[Metadata Source]
-        MON[Monitoring/Alerts]
+        RPC["RPC Provider - Helius or equivalent"]
+        META["Metadata Source"]
+        MON["Monitoring and Alerts"]
     end
 
     ORC -->|Read chain data| RPC
